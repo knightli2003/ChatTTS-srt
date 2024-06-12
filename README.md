@@ -27,6 +27,12 @@ ChatTTS is a powerful text-to-speech system. However, it is very important to ut
 
 <h4>Basic usage</h4>
 
+## Quick Start
+```
+pip install --upgrade -r requirements.txt 
+python3 app.py "your text"
+```
+
 ```python
 import ChatTTS
 from IPython.display import Audio
