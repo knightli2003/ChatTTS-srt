@@ -108,7 +108,7 @@ def refine_text(
     has_interrupted = False
 
     if not refine_text_flag:
-        sleep(1) # to skip fast answer of loading mark
+        sleep(1)  # to skip fast answer of loading mark
         return text, *set_generate_buttons(
             generate_button, interrupt_button, is_reset=True
         )

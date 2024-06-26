@@ -70,10 +70,15 @@ class Chat:
     ) -> Optional[str]:
         if source == "local":
             download_path = os.getcwd()
-            if not check_all_assets(Path(download_path), self.sha256_map, update=True) or force_redownload:
+            if (
+                not check_all_assets(Path(download_path), self.sha256_map, update=True)
+                or force_redownload
+            ):
                 with tempfile.TemporaryDirectory() as tmp:
                     download_all_assets(tmpdir=tmp)
-                if not check_all_assets(Path(download_path), self.sha256_map, update=False):
+                if not check_all_assets(
+                    Path(download_path), self.sha256_map, update=False
+                ):
                     self.logger.error(
                         "download to local path %s failed.", download_path
                     )
@@ -107,9 +112,7 @@ class Chat:
         elif source == "custom":
             self.logger.log(logging.INFO, f"try to load from local: {custom_path}")
             if not check_all_assets(Path(custom_path), self.sha256_map, update=False):
-                self.logger.error(
-                    "check models in custom path %s failed.", custom_path
-                )
+                self.logger.error("check models in custom path %s failed.", custom_path)
                 return None
             download_path = custom_path
 
